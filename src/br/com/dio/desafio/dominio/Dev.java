@@ -11,25 +11,25 @@ public class Dev {
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
-       this.conteudosInscritos.add((Conteudo) bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().add(this);
+        this.conteudosInscritos.addAll(bootcamp.getConteudos());
+        bootcamp.inscreverDev(this);
     }
 
     public void progredir() {
-       Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-       if(conteudo.isPresent()) {
-           this.conteudosConcluidos.add(conteudo.get());
-           this.conteudosInscritos.remove(conteudo.get());
-       } else {
-         System.err.println("Você não está matriculado em nenhum conteúdo");
-       }
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        if (conteudo.isPresent()) {
+            this.conteudosConcluidos.add(conteudo.get());
+            this.conteudosInscritos.remove(conteudo.get());
+        } else {
+            System.err.println("Você não está matriculado em nenhum conteúdo");
+        }
     }
 
     public double calcularTotalXp() {
-       return this.conteudosConcluidos
-               .stream()
-               .mapToDouble(Conteudo::calcularXp)
-               .sum();
+        return this.conteudosConcluidos
+                .stream()
+                .mapToDouble(Conteudo::calcularXp)
+                .sum();
     }
 
     public String getNome() {

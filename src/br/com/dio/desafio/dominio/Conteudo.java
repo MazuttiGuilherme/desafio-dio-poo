@@ -22,4 +22,10 @@ public abstract class Conteudo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public void add(Curso curso1) {
+    }
+
+    public void add(Mentoria mentoria) {
+    }
 }
