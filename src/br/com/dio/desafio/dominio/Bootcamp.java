@@ -14,6 +14,7 @@ public class Bootcamp {
     private Set<Dev> devsInscritos = new HashSet<>();
     private Set<Conteudo> conteudos = new LinkedHashSet<>();
 
+    // Getters and setters
     public String getNome() {
         return nome;
     }
@@ -46,20 +47,26 @@ public class Bootcamp {
         this.devsInscritos = devsInscritos;
     }
 
-    public Set<Conteudo> getConteudos() {
-        return conteudos;
+    public Conteudo getConteudos() {
+        return (Conteudo) conteudos;
     }
 
     public void setConteudos(Set<Conteudo> conteudos) {
         this.conteudos = conteudos;
     }
 
+    // Overriding equals and hashCode methods
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devsInscritos, bootcamp.devsInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
+        return Objects.equals(nome, bootcamp.nome) &&
+                Objects.equals(descricao, bootcamp.descricao) &&
+                Objects.equals(dataInicial, bootcamp.dataInicial) &&
+                Objects.equals(dataFinal, bootcamp.dataFinal) &&
+                Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
+                Objects.equals(conteudos, bootcamp.conteudos);
     }
 
     @Override
